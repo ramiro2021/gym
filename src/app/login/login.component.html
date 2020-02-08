@@ -1,0 +1,46 @@
+<div class="container">
+    <div class="text-center">
+        <img src="assets/logo.png" alt="" />
+        <h3>
+            Bienvenido! <br />
+            porfavor ingrese sus datos
+        </h3>
+    </div>
+    <form [formGroup]="formularioLogin" class="text-center">
+        <div class="form-group">
+            <label for="email">Email address</label>
+            <input type="email" class="form-control" id="email" formControlName="email" aria-describedby="emailHelp"
+                placeholder="ingrese su email" />
+            <div class="alert alert-danger" *ngIf="
+          formularioLogin.controls['email'].invalid &&
+          formularioLogin.controls['email'].dirty
+        " role="alert">
+                <span *ngIf="formularioLogin.controls['email'].errors.required">El email es requerido</span>
+                <span *ngIf="formularioLogin.controls['email'].errors.email">El email no es valido</span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="password">Password</label>
+            <input type="password" (keyUp.enter)="ingresar()" class="form-control" id="password"
+                formControlName="password" placeholder="ingrese su password" />
+            <div class="alert alert-danger" *ngIf="
+          formularioLogin.controls['password'].invalid &&
+          formularioLogin.controls['password'].dirty
+        " role="alert">
+                <span *ngIf="formularioLogin.controls['password'].errors.required">password requerida</span>
+            </div>
+        </div>
+
+        <button type="submit" [disabled]="!formularioLogin.valid" (click)="ingresar()"
+            class="btn btn-primary btn-block">
+            Ingresar
+        </button>
+    </form>
+    <div class="alert alert-warning" role="alert" *ngIf="!datosCorrectos">
+        {{ textoError }}
+    </div>
+    
+    <ngx-spinner bdOpacity="1" bdColor="#000000" size="medium" color="#FFFFFF" type="ball-circus" [fullScreen]="false">
+        <p style="color: white">Ingresando al sistema...</p>
+    </ngx-spinner>
+</div>
