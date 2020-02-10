@@ -1,0 +1,121 @@
+<div class="container mt-5">
+    <form [formGroup]="formularioCliente" >
+
+        <div class="row">
+
+            <div class="col-4">
+                <div class="form-group">
+                    <label for="">Nombre</label>
+                    <input type="text" class="form-control" formControlName="nombre" placeholder="ingrese su nombre">
+                    <div class="alert alert-danger" *ngIf="
+                     formularioCliente.controls['nombre'].invalid &&
+                     formularioCliente.controls['nombre'].dirty
+                    " role="alert">
+                        <span *ngIf="formularioCliente.controls['nombre'].errors.required">El nombre es requerido</span>
+                        
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-4">
+                <div class="form-group">
+                    <label for="">Apellido</label>
+                    <input type="text" class="form-control" formControlName="apellido"
+                        placeholder="ingrese su apellido">
+                        <div class="alert alert-danger" *ngIf="
+                        formularioCliente.controls['apellido'].invalid &&
+                        formularioCliente.controls['apellido'].dirty
+                       " role="alert">
+                           <span *ngIf="formularioCliente.controls['apellido'].errors.required">El apellido es requerido</span>
+                           
+                       </div>
+                </div>
+            </div>
+
+            <div class="col-4">
+                <div class="form-group">
+                    <label for="">Correo</label>
+                    <input type="text" class="form-control" formControlName="correo" placeholder="ingrese su correo">
+                    <div class="alert alert-danger" *ngIf="
+                     formularioCliente.controls['correo'].invalid &&
+                     formularioCliente.controls['correo'].dirty
+                    " role="alert">
+                        <span *ngIf="formularioCliente.controls['correo'].errors.required">El correo es requerido</span>
+                        <span *ngIf="formularioCliente.controls['correo'].errors.email">El email no es valido</span>
+                    </div>
+                </div>
+            </div>    
+
+                <div class="col-4">
+                    <div class="form-group">
+                        <label for="">DNI</label>
+                        <input type="text" class="form-control" formControlName="dni" placeholder="ingrese su DNI">
+                        <div class="alert alert-danger" *ngIf="
+                     formularioCliente.controls['dni'].invalid &&
+                     formularioCliente.controls['dni'].dirty
+                    " role="alert">
+                        <span *ngIf="formularioCliente.controls['dni'].errors.required">El dni es requerido</span>
+                        
+                    </div>
+                    </div>
+                </div>
+
+                <div class="col-4">
+                    <div class="form-group">
+                        <label for="">Fecha de nacimiento</label>
+                        <input type="date" class="form-control" formControlName="fechaNacimiento"
+                            placeholder="ingrese su fecha de nacimiento">
+                            <div class="alert alert-danger" *ngIf="
+                            formularioCliente.controls['fechaNacimiento'].invalid &&
+                            formularioCliente.controls['fechaNacimiento'].dirty
+                           " role="alert">
+                               <span *ngIf="formularioCliente.controls['fechaNacimiento'].errors.required">La fecha de nacimiento es requerido</span>
+                               
+                           </div>
+                    </div>
+                </div>
+
+                <div class="col-4">
+                    <div class="form-group">
+                        <label for="">Telefono</label>
+                        <input type="tel" class="form-control" formControlName="telefono"
+                            placeholder="ingrese su telefono">
+
+                    </div>
+                </div>
+
+                <div class="col-12">
+                    <div class="form-group">
+                        <label for="">Rutina</label>
+                        <input type="text" class="form-control" formControlName="rutina"
+                            placeholder="ingrese su Rutina">
+
+                    </div>
+                </div>
+
+                <div class="col-12">
+                    <div class="form-group">
+                        <label for="">Ingrese su avatar</label>
+                        <input type="file" (change)="subirImagen($event)" class="form-control-file" formControlName="imgUrl"
+                            placeholder="ingrese su imagen">
+                            <div class="alert alert-danger" *ngIf="
+                            formularioCliente.controls['imgUrl'].invalid &&
+                            formularioCliente.controls['imgUrl'].dirty
+                           " role="alert">
+                               <span *ngIf="formularioCliente.controls['imgUrl'].errors.required">Su avatar es requerido</span>
+                               
+                           </div>    
+                        <div class="col-sm 12 mt-2 mb-2">
+                            <progressbar [value]="porcentajeImg" type="danger" [striped]="true">{{porcentajeImg}}%</progressbar>
+                        </div>
+                    </div>
+                </div>
+
+                <button *ngIf="!esEditable" class="btn btn-primary btn-block" [disabled]="formularioCliente.invalid" (click)="agregar()"> Agregar Cliente</button>
+                <button *ngIf="esEditable" class="btn btn-success btn-block"  (click)="editar()"> Editar Cliente</button>
+            </div>
+
+            
+
+    </form>
+</div>
