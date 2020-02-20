@@ -24,6 +24,7 @@ import { AngularFireStorageModule } from '@angular/fire/storage';
 import { PreciosComponent } from './precios/precios.component';
 import { InscripcionComponent } from './inscripcion/inscripcion.component';
 import { SeleccionarClienteComponent } from './seleccionar-cliente/seleccionar-cliente.component';
+import { ListaInscripcionComponent } from './lista-inscripcion/lista-inscripcion.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -33,7 +34,8 @@ import { SeleccionarClienteComponent } from './seleccionar-cliente/seleccionar-c
     AgregarClienteComponent,
     PreciosComponent,
     InscripcionComponent,
-    SeleccionarClienteComponent
+    SeleccionarClienteComponent,
+    ListaInscripcionComponent
   ],
   imports: [
     BrowserModule,
